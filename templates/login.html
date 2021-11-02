@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Servidor de MariaDB{% endblock %}
+{% block content %}
+<a class="navbar-brand" href="/" title="">
+<img src="{{url_for('static', filename='assets/MariaDB.png')}}" width=550 style='margin-left: 400px' class="navbar-logo-img" alt="Inicio">
+</a>
+  <div class="hero-full-container background-image-container white-text-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+            <br><br><br><br>
+          <h1>Servidor de MariaDB</h1>
+        <form action="/buscador" method="post">
+            <input type="text" name="usuario" placeholder="Usuario" required/>
+            <input type="text" name="contraseña" placeholder="Contraseña" required/>
+        </select>
+        <input type="submit" value="Enviar"/>
+    </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{%endblock%}

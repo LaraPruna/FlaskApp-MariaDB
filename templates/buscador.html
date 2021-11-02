@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Buscador{% endblock %}
+{% block content %}
+<a class="navbar-brand" href="/" title="">
+<img src="{{url_for('static', filename='assets/MariaDB.png')}}" width=550 style='margin-left: 400px' class="navbar-logo-img" alt="Inicio">
+</a>
+  <div class="hero-full-container background-image-container white-text-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+            <br><br><br><br>
+            <h1>Buscador de datos</h1>
+            <p>¡Bienvenido al servidor de MariaDB de Lara! ¿Qué buscas?</p>
+            <br>
+            <form action="/buscador" method="post">
+                <input type="radio" name="filtro" value="empleado"> Empleado
+                <input type="radio" name="filtro" value="destino"> Destino
+                <input type="radio" name="filtro" value="precio"> Precio
+                <input type="submit" value="Enviar"/>
+            </form>
+                <br>
+                {% if filtro %}
+                    <form action="/datos" method="post">
+                    {% if filtro=="empleado" %}
+                        <input type="text" name="empleado" value="{{empleado}}" required/>
+                    {% elif filtro=="destino" %}
+                        <select name="destino">
+                        {% for dest in destinos %}
+                            <option value="{{dest}}" required>{{dest}}</option>
+                        {% endfor %}
+                    {% elif filtro=="precio" %}
+                        <p>
+                            Precio mínimo: <input type="number" name="preciomin" value="{{preciomin}}" placeholder="0000" style="color: gray" required>
+                            <br><br>
+                            Precio máximo: <input type="number" name="preciomax" value="{{preciomax}}" placeholder="0000" style="color: gray" required>
+                        </p>
+                    {% endif %}
+                    </select> 
+                    <input type="submit" value="Enviar"/>
+                </form>
+                <br>
+                {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{%endblock%}
